@@ -16,7 +16,7 @@ Environment variables:
   a hostname for your Docker container instead.
 
 ``SMTP_PORTS``
- Exim's ``daemon_smtp_ports`` setting, "25 : 587" by default.
+ Exim's ``daemon_smtp_ports`` setting, ``25 : 587`` by default.
 
 
 Example:

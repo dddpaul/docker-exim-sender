@@ -15,11 +15,14 @@ Environment variables:
   Exim's ``primary_hostname`` setting; you should also be able to specify
   a hostname for your Docker container instead.
 
+``SMTP_PORTS``
+ Exim's ``daemon_smtp_ports`` setting, "25 : 587" by default.
+
 
 Example:
 --------
 
-    docker run -p 4444:25 -v /tmp/exim:/var/spool/exim4 -e PRIMARY_HOST=example.org -e ALLOWED_HOSTS="194.168.59.1/16" dddpaul/exim-sender
+    docker run --net=host -v /tmp/exim:/var/spool/exim4 -e PRIMARY_HOST=example.org -e ALLOWED_HOSTS="194.168.59.1/16" -e SMTP_PORTS=10025 dddpaul/exim-sender
 
 
 Volumes you may want to share:

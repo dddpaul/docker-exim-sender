@@ -6,6 +6,12 @@ mkdir -p $path
 echo $PRIMARY_HOST > $path/primary_host
 echo "127.0.0.1 ; ::1 ;" "$ALLOWED_HOSTS" > $path/allowed_hosts
 
+if [ -n "$SMTP_PORTS" ]; then
+    echo "$SMTP_PORTS" > $path/smtp_ports
+else
+    echo "25 : 587" > $path/smtp_ports
+fi
+
 # Make sure spool directory is writable (if a mounted volume)
 chown Debian-exim /var/spool/exim4
 

@@ -7,13 +7,16 @@ go a local directory in ``/var/spool/exim4/bounces``.
 Environment variables:
 ----------------------
 
-``ALLOWED_HOSTS``
-  ``;`` separated list of allowed senders. Used within an Exim hostlist,
-  may include networks (``192.168.23.0/24 : my.friend.example``).
-
 ``PRIMARY_HOST``
   Exim's ``primary_hostname`` setting; you should also be able to specify
   a hostname for your Docker container instead.
+
+``ALLOWED_HOSTS``
+  ``;`` separated list of allowed senders. Used within an Exim hostlist,
+  may include networks (``192.168.23.0/24``).
+
+``ALLOWED_DOMAINS``
+  ``;`` separated list of allowed domains.  Used within an Exim domainlist.
 
 ``SMTP_PORTS``
  Exim's ``daemon_smtp_ports`` setting, ``25 : 587`` by default.
@@ -22,7 +25,7 @@ Environment variables:
 Example:
 --------
 
-    docker run --net=host -v /tmp/exim:/var/spool/exim4 -e PRIMARY_HOST=example.org -e ALLOWED_HOSTS="194.168.59.1/16" -e SMTP_PORTS=10025 dddpaul/exim-sender
+    docker run --net=host -v /tmp/exim:/var/spool/exim4 -e PRIMARY_HOST=example.org -e ALLOWED_HOSTS="194.168.59.1/16" -e ALLOWED_DOMAINS=example.org -e SMTP_PORTS=10025 dddpaul/exim-sender
 
 
 Volumes you may want to share:

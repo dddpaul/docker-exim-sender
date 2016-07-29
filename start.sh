@@ -1,10 +1,11 @@
 #!/bin/bash
 
 path=/etc/exim4
-
+s
 mkdir -p $path
 echo $PRIMARY_HOST > $path/primary_host
 echo "127.0.0.1 ; ::1 ;" "$ALLOWED_HOSTS" > $path/allowed_hosts
+echo "$ALLOWED_DOMAINS" > $path/allowed_domains
 
 if [ -n "$SMTP_PORTS" ]; then
     echo "$SMTP_PORTS" > $path/smtp_ports
